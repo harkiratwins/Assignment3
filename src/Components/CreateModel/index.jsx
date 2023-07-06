@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const baseURL = "http://localhost:4500/students";
 
-function CreateModel({post, setPost, setlength}) {
+function CreateModel({post, setPost, setlength, getStudentsAllRecords}) {
   const [show, setShow] = useState(false);
   
 
@@ -37,6 +37,7 @@ function CreateModel({post, setPost, setlength}) {
         //alert("Data Added Successfully!");
         setlength(response.data);
         handleClose()
+        getStudentsAllRecords()
       })
       .catch((err) => console.log(err));
       setInputData({
