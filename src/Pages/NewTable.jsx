@@ -27,7 +27,7 @@ const NewTable = () => {
     //   debugger;
     //   setPost(response.data);
     // });
-  }, []);
+  }, [length]);
 
   const getStudentsAllRecords = () => {
     axios.get(baseURL).then((response) => {
@@ -79,13 +79,14 @@ const NewTable = () => {
     const conf = window.confirm("Do You Want To Delete");
     if (conf) {
       axios
-        .delete(`${baseURL}/${id}`)
+        .delete(`${baseURL}/${id}`,id)
        
         .then((response) => {
           //alert('Record is deleted');
           showToastMessage();
-          setPost(response.data)
+          // setPost(response.data)
           // console.log(response)
+          getStudentsAllRecords()
           
         })
         .catch((err) => console.log(err));
@@ -184,11 +185,12 @@ const NewTable = () => {
                   })}
               </tbody>
             </table>
-            <ReactPaginate
+          </div>
+          <ReactPaginate
               previousLabel={"previous"}
               nextLabel={"next"}
               breakLabel={"..."}
-              pageCount={15}
+              pageCount={5}
               marginPagesDisplayed={2}
               pageRangeDisplayed={3}
               onPageChange={handlePageClick}
@@ -203,7 +205,6 @@ const NewTable = () => {
               breakLinkClassName={"page-link"}
               activeClassName={"active"}
             />
-          </div>
         </div>
       </div>
     </>

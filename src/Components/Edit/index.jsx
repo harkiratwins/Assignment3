@@ -39,7 +39,7 @@ const EditModel = ({ id, post, setlength }) => {
     event.preventDefault();
     axios.put(`${baseURL}/${id}`, inputData).then((response) => {
       // setInputData(response.data);
-      setlength(response.data);
+      setlength(response.data.length);
       showToastMessage();
       //alert("data update successfully..!");
     });
