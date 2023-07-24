@@ -73,7 +73,7 @@ const NewTable = () => {
 
   
 
-  function deletePost(evt, id) {
+  function deletePost(id) {
     console.log(id ,"id")
     // evt.stopPropagation()
     const conf = window.confirm("Do You Want To Delete");
